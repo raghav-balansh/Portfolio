@@ -1,0 +1,38 @@
+:root {
+  --bg: #fff;
+  --fg: #111;
+  --border: #ddd;
+}
+[data-theme="dark"] {
+  --bg: #0b0b0b;
+  --fg: #eee;
+  --border: #222;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: system-ui, sans-serif;
+}
+
+.nav, .footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px;
+  border-bottom: 1px solid var(--border);
+}
+
+.container {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+a {
+  color: var(--fg);
+  text-decoration: none;
+  margin: 0 8px;
+}

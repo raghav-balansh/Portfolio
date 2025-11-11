@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" data-theme="auto">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Raghav Portfolio{% endblock %}</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+  <meta name="description" content="Raghav Maheshwari — Machine Learning and AI Portfolio">
+</head>
+
+<body>
+  {% include "_partials/header.html" %}
+  <main class="container">
+      {% block content %}{% endblock %}
+  </main>
+  {% include "_partials/footer.html" %}
+
+  <!-- JS -->
+  <script src="{% static 'js/theme.js' %}"></script>
+  <script src="{% static 'js/filters.js' %}"></script>
+</body>
+</html>
