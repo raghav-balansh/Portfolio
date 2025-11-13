@@ -11,7 +11,7 @@
   <div class="featured">
     <h1>🚀 {{ featured.title }}</h1>
     <p>{{ featured.short_desc }}</p>
-    <a href="{% url 'project_detail' featured.slug %}" class="btn">View Project →</a>
+    <a href="{% url 'project_details' featured.slug %}" class="btn">View Project →</a>
   </div>
   {% endif %}
 </section>

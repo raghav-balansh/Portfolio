@@ -5,16 +5,21 @@ from content.models import skills, certificates
 
 # Create your views here.
 def home(request):
+    latest_projects = Project.objects.all().order_by('created_at')[:6]
     featured_project = Project.objects.filter(is_featured=True).first()
     upcoming_project = Project.objects.filter(is_upcoming=True)[:3]
     latest_blog = BlogPost.objects.filter(is_published=True).order_by('-published_at').first()
     certs = certificates.objects.order_by('-date')[:4]
     Skills = skills.objects.order_by('name')
+    resume = 'media/Raghav_Resume.pdf'
+
 
     return render(request, 'core/home.html', {
+        'latest_projects' : latest_projects,
         'featured_project': featured_project,
         'upcoming_project': upcoming_project,
         'latest_blog': latest_blog,
         'certificates': certs,
         'skills': Skills,
+        'resume':resume,
     })

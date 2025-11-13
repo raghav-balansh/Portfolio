@@ -1,4 +1,5 @@
 {% load static %}
+{% load media %}
 <header class="nav">
   <a class="logo" href="/">RM</a>
 
@@ -7,8 +8,8 @@
     <a href="{% url 'project_list' %}">Projects</a>
     <a href="{% url 'blog_list' %}">Blog</a>
     <a href="{% url 'contact' %}">Contact</a>
-    <a href="{% static 'Raghav_Resume.pdf' %}" download>Resume</a>
+    <a href="\media\Raghav_Resume.pdf" download>Resume</a>
   </nav>
 
-  <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  <button id="theme-toggle" aria-label="Toggle theme">light btn</button>
 </header>
