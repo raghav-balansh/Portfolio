@@ -1,26 +1,49 @@
 {% load static %}
+<link rel="stylesheet" href="{% static 'css/base.css' %}">
+{% block extra_css %}{% endblock %}
+
 <!DOCTYPE html>
-<html lang="en" data-theme="auto">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% block title %}Raghav Portfolio{% endblock %}</title>
-
-  <!-- CSS -->
+  <title>{% block title %}Raghav Maheshwari | Portfolio{% endblock %}</title>
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
-
-  <meta name="description" content="Raghav Maheshwari — Machine Learning and AI Portfolio">
+  <script>
+    // system preference sync
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const theme = localStorage.getItem('theme') || (prefersDark ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
+  </script>
 </head>
-
 <body>
-  {% include "_partials/header.html" %}
-  <main class="container">
-      {% block content %}{% endblock %}
-  </main>
-  {% include "_partials/footer.html" %}
+  <header>
+    <nav class="nav">
+      <a href="/">Home</a>
+      <a href="/projects/">Projects</a>
+      <a href="/blog/">Blog</a>
+      <a href="/contact/">Contact</a>
+      <a href="{% static 'Raghav_Resume.pdf' %}" download>Resume</a>
+      <button id="theme-toggle">🌓</button>
+    </nav>
+  </header>
 
-  <!-- JS -->
-  <script src="{% static 'js/theme.js' %}"></script>
-  <script src="{% static 'js/filters.js' %}"></script>
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer>
+    <p>© {{ now|date:"Y" }} Raghav Maheshwari</p>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('theme-toggle');
+    toggle.addEventListener('click', () => {
+      const current = document.documentElement.getAttribute('data-theme');
+      const next = current === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+    });
+  </script>
 </body>
 </html>

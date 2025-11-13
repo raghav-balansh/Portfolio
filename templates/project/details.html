@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/project.css' %}">
+{% endblock %}
+{% block title %}{{ project.title }} | Project Details{% endblock %}
+{% block content %}
+
+<section class="project-detail">
+  <h1>{{ project.title }}</h1>
+  <img src="{{ project.cover_image.url }}" class="detail-cover" alt="{{ project.title }}">
+  <p>{{ project.long_desc|linebreaks }}</p>
+
+  <div class="project-meta">
+    {% if project.repo_url %}<a href="{{ project.repo_url }}" target="_blank">GitHub Repo</a>{% endif %}
+    {% if project.live_url %}<a href="{{ project.live_url }}" target="_blank">Live Site</a>{% endif %}
+    {% if project.blog_url %}<a href="{{ project.blog_url }}" target="_blank">Blog Post</a>{% endif %}
+  </div>
+
+  {% if project.projectimage_set.all %}
+  <div class="gallery">
+    {% for img in project.projectimage_set.all %}
+      <img src="{{ img.image.url }}" class="gallery-img" alt="Project Image">
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  <div class="stack">
+    <h3>Tech Stack</h3>
+    <ul>
+      {% for tag in project.stack.all %}
+        <li>{{ tag.name }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+
+{% endblock %}

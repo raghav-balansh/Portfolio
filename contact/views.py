@@ -1,5 +1,12 @@
 from django.shortcuts import render
-from django.http import HttpResponse
-# Create your views here.
+from .form import ContactForm
+
 def contact_list(request):
-    return render(request, 'contact/contact.html')
+    if request.method == "POST":
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return render(request, 'contact/success.html')
+    else:
+        form = ContactForm()
+    return render(request, 'contact/contact.html', {'form': form})

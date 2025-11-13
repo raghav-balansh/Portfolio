@@ -1,6 +1,19 @@
 {% extends 'base.html' %}
-{% block title %}Blog{% endblock %}
+{% block title %}Blog — Raghav{% endblock %}
 {% block content %}
 <h1>Blog</h1>
-<p>My Medium posts will show here soon.</p>
+<div class="grid blog-grid">
+  {% for post in posts %}
+  <article class="card blog-card">
+    {% if post.thumbnail %}
+      <a href="{{ post.external_url }}" target="_blank"><img src="{{ post.thumbnail.url }}" class="card-img"></a>
+    {% endif %}
+    <div class="card-body">
+      <h3><a href="{{ post.external_url }}" target="_blank">{{ post.title }}</a></h3>
+      <p class="muted">{{ post.subtitle|default:"" }}</p>
+      <small class="muted">{{ post.published_at|date:"M j, Y" }}</small>
+    </div>
+  </article>
+  {% empty %}<p>No blog posts yet.</p>{% endfor %}
+</div>
 {% endblock %}

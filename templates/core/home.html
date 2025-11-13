@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="hero">
+  <img src="{% static 'images/profile.jpg' %}" alt="Raghav Maheshwari" class="profile-pic">
+  <h1>Hi, I'm <span class="accent">Raghav Maheshwari</span></h1>
+  <p class="tagline">A passionate developer blending design, data, and innovation.</p>
+
+  <div class="social-links">
+    <a href="https://github.com/raghav-balansh" target="_blank">GitHub</a>
+    <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+    <a href="{% url 'contact' %}">Contact Me</a>
+  </div>
+</section>
+
+<section class="skills">
+  <h2>Skills</h2>
+  <ul>
+    <li>Python</li>
+    <li>Django</li>
+    <li>JavaScript</li>
+    <li>Machine Learning</li>
+    <li>SQL</li>
+    <li>HTML/CSS</li>
+  </ul>
+</section>
+
+<section class="projects">
+  <h2>Latest Projects</h2>
+  <div class="projects-grid">
+    {% for project in latest_projects %}
+    <div class="project-card">
+      {% if project.image %}
+      <img src="{{ project.image.url }}" alt="{{ project.title }}">
+      {% endif %}
+      <h3>{{ project.title }}</h3>
+      <p>{{ project.description|truncatechars:100 }}</p>
+      <a href="{% url 'project_detail' project.slug %}">View Details →</a>
+    </div>
+    {% empty %}
+    <p>No projects yet.</p>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="certificates">
+  <h2>Certificates & Achievements</h2>
+  <div class="cert-grid">
+    {% for cert in certificates %}
+    <div class="cert-card">
+      <h3>{{ cert.title }}</h3>
+      <p>{{ cert.description|truncatechars:80 }}</p>
+    </div>
+    {% empty %}
+    <p>No certificates added yet.</p>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

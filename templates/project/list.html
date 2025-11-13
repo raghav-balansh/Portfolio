@@ -1,6 +1,63 @@
 {% extends 'base.html' %}
-{% block title %}Projects{% endblock %}
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/project.css' %}">
+{% endblock %}
+{% block title %}Projects | Raghav Maheshwari{% endblock %}
 {% block content %}
-<h1>Projects</h1>
-<p>All my projects will appear here soon.</p>
+
+<section class="project-hero">
+  {% if featured %}
+  <div class="featured">
+    <h1>🚀 {{ featured.title }}</h1>
+    <p>{{ featured.short_desc }}</p>
+    <a href="{% url 'project_detail' featured.slug %}" class="btn">View Project →</a>
+  </div>
+  {% endif %}
+</section>
+
+{% if upcoming %}
+<section class="upcoming">
+  <h2>Upcoming Projects</h2>
+  <div class="projects-grid">
+    {% for proj in upcoming %}
+    <div class="project-card">
+      <img src="{{ proj.cover_image.url }}" alt="{{ proj.title }}">
+      <h3>{{ proj.title }}</h3>
+      <p>{{ proj.short_desc|truncatechars:80 }}</p>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
+<section class="projects">
+  <h2>All Projects</h2>
+  <div class="projects-grid">
+    {% for proj in projects %}
+    <div class="project-card">
+      {% if proj.cover_image %}
+        <img src="{{ proj.cover_image.url }}" alt="{{ proj.title }}">
+      {% endif %}
+      <h3>{{ proj.title }}</h3>
+      <p>{{ proj.short_desc|truncatechars:100 }}</p>
+      <div class="card-links">
+        {% if proj.repo_url %}
+        <a href="{{ proj.repo_url }}" target="_blank">GitHub</a>
+        {% endif %}
+        {% if proj.live_url %}
+        <a href="{{ proj.live_url }}" target="_blank">Live Demo</a>
+        {% endif %}
+        {% if proj.blog_url %}
+        <a href="{{ proj.blog_url }}" target="_blank">Blog</a>
+        {% endif %}
+      </div>
+      <a href="{% url 'project_details' proj.slug %}" class="btn-small">View Details</a>
+    </div>
+    {% empty %}
+    <p>No projects added yet.</p>
+    {% endfor %}
+  </div>
+</section>
+
 {% endblock %}

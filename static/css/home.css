@@ -1,0 +1,41 @@
+.hero {
+  text-align: center;
+  padding: 4rem 0;
+}
+
+.profile-pic {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.hero h1 {
+  margin-top: 1rem;
+}
+
+.tagline {
+  font-size: 1.2rem;
+  opacity: 0.8;
+  margin-bottom: 2rem;
+}
+
+.skills ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  gap: 10px;
+}
+
+.skills li {
+  background: var(--card-bg-light);
+  padding: 10px 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme='dark'] .skills li {
+  background: var(--card-bg-dark);
+}
