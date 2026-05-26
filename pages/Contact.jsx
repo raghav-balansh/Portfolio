@@ -6,19 +6,33 @@ import TiltCard from '../components/TiltCard.jsx';
 const Contact = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSuccess, setIsSuccess] = useState(false);
+    const [error, setError] = useState(null);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         setIsSubmitting(true);
+        setError(null);
 
-        // Simulate API call
-        setTimeout(() => {
+        const formData = new FormData(e.target);
+
+        try {
+            const response = await fetch('/', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: new URLSearchParams(formData).toString(),
+            });
+
+            if (response.ok) {
+                setIsSuccess(true);
+                e.target.reset();
+            } else {
+                setError('Something went wrong. Please try again.');
+            }
+        } catch (err) {
+            setError('Network error. Please check your connection.');
+        } finally {
             setIsSubmitting(false);
-            setIsSuccess(true);
-
-            // Reset after showing success
-            setTimeout(() => setIsSuccess(false), 5000);
-        }, 1500);
+        }
     };
 
     return (
@@ -111,16 +125,28 @@ const Contact = () => {
                                         </button>
                                     </div>
                                 ) : (
-                                    <form onSubmit={handleSubmit} className="space-y-6">
+                                    <form
+                                        name="contact"
+                                        method="POST"
+                                        data-netlify="true"
+                                        netlify-honeypot="bot-field"
+                                        onSubmit={handleSubmit}
+                                        className="space-y-6"
+                                    >
+                                        {/* Required hidden fields for Netlify */}
+                                        <input type="hidden" name="form-name" value="contact" />
+                                        <input type="hidden" name="bot-field" />
+
                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                             <div className="space-y-2">
                                                 <label htmlFor="name" className="text-xs font-bold text-slate-400 uppercase tracking-wider">Name</label>
                                                 <input
                                                     type="text"
                                                     id="name"
+                                                    name="name"
                                                     required
                                                     className="w-full bg-[#111] border border-white/10 rounded-lg px-4 py-3 text-white focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all placeholder-slate-600"
-                                                    placeholder="Raghav"
+                                                    placeholder="Your Name"
                                                 />
                                             </div>
                                             <div className="space-y-2">
@@ -128,9 +154,10 @@ const Contact = () => {
                                                 <input
                                                     type="email"
                                                     id="email"
+                                                    name="email"
                                                     required
                                                     className="w-full bg-[#111] border border-white/10 rounded-lg px-4 py-3 text-white focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all placeholder-slate-600"
-                                                    placeholder="raghav@example.com"
+                                                    placeholder="you@example.com"
                                                 />
                                             </div>
                                         </div>
@@ -139,6 +166,7 @@ const Contact = () => {
                                             <input
                                                 type="text"
                                                 id="subject"
+                                                name="subject"
                                                 required
                                                 className="w-full bg-[#111] border border-white/10 rounded-lg px-4 py-3 text-white focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all placeholder-slate-600"
                                                 placeholder="Project Collaboration"
@@ -148,12 +176,18 @@ const Contact = () => {
                                             <label htmlFor="message" className="text-xs font-bold text-slate-400 uppercase tracking-wider">Message</label>
                                             <textarea
                                                 id="message"
+                                                name="message"
                                                 rows={5}
                                                 required
                                                 className="w-full bg-[#111] border border-white/10 rounded-lg px-4 py-3 text-white focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all resize-none placeholder-slate-600"
                                                 placeholder="Tell me about your project..."
                                             ></textarea>
                                         </div>
+
+                                        {error && (
+                                            <p className="text-red-400 text-sm text-center">{error}</p>
+                                        )}
+
                                         <button
                                             type="submit"
                                             disabled={isSubmitting}
