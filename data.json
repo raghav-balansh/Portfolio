@@ -1,0 +1,191 @@
+{
+  "resumeLink": "https://docs.google.com/document/d/your-resume-link",
+  "stats": [
+    { "label": "Projects Completed", "value": "50+" },
+    { "label": "Years Experience", "value": "3+" },
+    { "label": "Certifications", "value": "15+" },
+    { "label": "Happy Clients", "value": "30+" }
+  ],
+  "skills": [
+    { "name": "JavaScript", "category": "Frontend", "icon": "code" },
+    { "name": "React", "category": "Frontend", "icon": "code" },
+    { "name": "HTML/CSS", "category": "Frontend", "icon": "code" },
+    { "name": "Tailwind CSS", "category": "Frontend", "icon": "code" },
+    { "name": "Three.js", "category": "Frontend", "icon": "box" },
+    
+    { "name": "Python", "category": "Backend", "icon": "server" },
+    { "name": "Django", "category": "Backend", "icon": "server" },
+    { "name": "Node.js", "category": "Backend", "icon": "server" },
+    { "name": "FastAPI", "category": "Backend", "icon": "server" },
+
+    { "name": "SQL", "category": "Database", "icon": "database" },
+    { "name": "PostgreSQL", "category": "Database", "icon": "database" },
+    { "name": "MongoDB", "category": "Database", "icon": "database" },
+    { "name": "Vector DB", "category": "Database", "icon": "database" },
+
+    { "name": "PyTorch", "category": "Machine Learning", "icon": "cpu" },
+    { "name": "TensorFlow", "category": "Machine Learning", "icon": "cpu" },
+    { "name": "Transformers", "category": "Machine Learning", "icon": "cpu" },
+    { "name": "OpenCV", "category": "Machine Learning", "icon": "eye" },
+    { "name": "Stable Diffusion", "category": "Machine Learning", "icon": "eye" },
+
+    { "name": "Docker", "category": "Tools & DevOps", "icon": "settings" },
+    { "name": "AWS", "category": "Tools & DevOps", "icon": "cloud" },
+    { "name": "Git", "category": "Tools & DevOps", "icon": "git-branch" },
+    { "name": "Linux", "category": "Tools & DevOps", "icon": "terminal" }
+  ],
+  "projects": [
+    {
+      "id": "1",
+      "title": "AI Image Generator",
+      "description": "A Generative AI application capable of creating realistic images from text prompts using Stable Diffusion.",
+      "longDescription": "This project leverages the power of Stable Diffusion to generate high-quality images from textual descriptions. Built with a React frontend and a FastAPI backend, it allows users to customize generation parameters like guidance scale, inference steps, and seed. The system is optimized for latency using TensorRT and deployed on a GPU-accelerated instance.",
+      "image": "https://picsum.photos/800/600?random=1",
+      "tags": ["Python", "PyTorch", "React", "FastAPI"],
+      "domain": "Gen AI",
+      "date": "2023-11-15",
+      "popular": true,
+      "githubUrl": "#",
+      "demoUrl": "#",
+      "gallery": [
+        "https://picsum.photos/800/600?random=12",
+        "https://picsum.photos/800/600?random=13",
+        "https://picsum.photos/800/600?random=14"
+      ]
+    },
+    {
+      "id": "2",
+      "title": "Traffic Sign Recognition",
+      "description": "Real-time traffic sign detection and classification system for autonomous vehicles.",
+      "longDescription": "Designed for autonomous driving systems, this project implements a real-time traffic sign detection and recognition pipeline. Using a custom-trained YOLOv8 model for detection and a specialized CNN for classification, it achieves 98.5% accuracy on the GTSRB dataset.",
+      "image": "https://picsum.photos/800/600?random=2",
+      "tags": ["OpenCV", "TensorFlow", "YOLO"],
+      "domain": "Computer Vision",
+      "date": "2023-09-20",
+      "popular": true,
+      "githubUrl": "#",
+      "gallery": [
+        "https://picsum.photos/800/600?random=15",
+        "https://picsum.photos/800/600?random=16"
+      ]
+    },
+    {
+      "id": "3",
+      "title": "Customer Churn Predictor",
+      "description": "Machine learning model to predict customer churn for telecom companies.",
+      "longDescription": "A comprehensive data analysis and predictive modeling project aimed at reducing customer attrition in the telecom sector. After extensive EDA and feature engineering using Pandas, I implemented an XGBoost classifier.",
+      "image": "https://picsum.photos/800/600?random=3",
+      "tags": ["Scikit-learn", "Pandas", "XGBoost"],
+      "domain": "ML",
+      "date": "2023-08-10",
+      "popular": false,
+      "githubUrl": "#",
+      "gallery": [
+        "https://picsum.photos/800/600?random=17",
+        "https://picsum.photos/800/600?random=18"
+      ]
+    },
+    {
+      "id": "4",
+      "title": "DeepFake Detector",
+      "description": "Deep Learning model to identify manipulated facial videos.",
+      "longDescription": "With the rise of synthetic media, detecting deepfakes is crucial. This project utilizes a MesoNet-based architecture to analyze video frames for artifacts introduced during the face-swapping process.",
+      "image": "https://picsum.photos/800/600?random=4",
+      "tags": ["Keras", "CNN", "Python"],
+      "domain": "DL",
+      "date": "2023-12-01",
+      "popular": true,
+      "githubUrl": "#",
+      "gallery": [
+        "https://picsum.photos/800/600?random=19",
+        "https://picsum.photos/800/600?random=20"
+      ]
+    },
+    {
+      "id": "5",
+      "title": "Portfolio Website",
+      "description": "Modern responsive portfolio website using React and Tailwind.",
+      "longDescription": "This very website! A showcase of my work designed with a focus on aesthetics and user experience.",
+      "image": "https://picsum.photos/800/600?random=5",
+      "tags": ["React", "JavaScript", "Tailwind"],
+      "domain": "Web Dev",
+      "date": "2023-10-05",
+      "popular": false,
+      "githubUrl": "#",
+      "gallery": [
+        "https://picsum.photos/800/600?random=21",
+        "https://picsum.photos/800/600?random=22"
+      ]
+    }
+  ],
+  "blogs": [
+    {
+      "id": "1",
+      "title": "The Future of Generative AI",
+      "excerpt": "Exploring how LLMs and diffusion models are reshaping the creative industry.",
+      "content": "<p>Generative AI is not just a buzzword; it's a paradigm shift in how we interact with technology. From text-to-image models like Stable Diffusion to Large Language Models (LLMs) like GPT-4, the landscape is evolving rapidly.</p>",
+      "image": "https://picsum.photos/800/400?random=6",
+      "date": "2023-12-10",
+      "views": 1250,
+      "category": "Gen AI",
+      "readTime": "5 min",
+      "externalUrl": "https://medium.com/"
+    },
+    {
+      "id": "2",
+      "title": "Getting Started with Computer Vision",
+      "excerpt": "A beginner guide to OpenCV and image processing techniques.",
+      "content": "<p>Computer Vision is the field of AI that enables computers to derive meaningful information from digital images, videos and other visual inputs. OpenCV is the most popular library for this purpose.</p>",
+      "image": "https://picsum.photos/800/400?random=7",
+      "date": "2023-11-22",
+      "views": 890,
+      "category": "Computer Vision",
+      "readTime": "8 min",
+      "externalUrl": "https://medium.com/"
+    },
+    {
+      "id": "3",
+      "title": "Optimization Techniques in DL",
+      "excerpt": "Understanding Adam, RMSprop, and SGD optimizers.",
+      "content": "<p>Training deep neural networks involves minimizing a loss function. Optimizers are the algorithms that update the model parameters to reduce this loss.</p>",
+      "image": "https://picsum.photos/800/400?random=8",
+      "date": "2023-10-15",
+      "views": 600,
+      "category": "Deep Learning",
+      "readTime": "6 min",
+      "externalUrl": "https://medium.com/"
+    }
+  ],
+  "certificates": [
+    {
+      "id": "1",
+      "title": "TensorFlow Developer Certificate",
+      "issuer": "Google",
+      "date": "2023-12-05",
+      "image": "https://picsum.photos/600/400?random=9",
+      "category": "ML",
+      "isNew": true,
+      "credentialUrl": "#"
+    },
+    {
+      "id": "2",
+      "title": "AWS Certified Solutions Architect",
+      "issuer": "Amazon Web Services",
+      "date": "2023-11-01",
+      "image": "https://picsum.photos/600/400?random=10",
+      "category": "Cloud",
+      "isNew": false,
+      "credentialUrl": "#"
+    },
+    {
+      "id": "3",
+      "title": "Deep Learning Specialization",
+      "issuer": "Coursera / DeepLearning.AI",
+      "date": "2023-09-15",
+      "image": "https://picsum.photos/600/400?random=11",
+      "category": "Data Science",
+      "isNew": false,
+      "credentialUrl": "#"
+    }
+  ]
+}
